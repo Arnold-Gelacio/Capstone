@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Software | TechFix: Computer Troubleshooting Guide</title><link rel="stylesheet" href="style.css"></head>
-<body data-page="software"><header><div class="wrap"><div class="bar"><a class="brand" href="index.html">Tech<span>Fix</span></a>
-<button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button></div>
-<nav aria-label="Main"><ul id="nav-list"><li><a href="index.html" data-page="index">Home</a></li><li><a href="hardware.html" data-page="hardware">Hardware</a></li><li><a href="software.html" data-page="software">Software</a></li><li><a href="internet.html" data-page="internet">Internet</a></li><li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li><li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li></ul></nav></div></header>
-<main class="wrap"><h1>Software Troubleshooting</h1><p class="muted">Windows-specific steps are labeled. Back up your files before steps that may delete data. No procedure solves every problem.</p><form id="search-form" class="search" role="search"><label for="q" class="muted" style="width:100%">Search problems</label>
-<input id="q" type="search" placeholder="e.g. no display, slow, wifi" autocomplete="off"><button class="btn" type="submit">Search</button></form><div id="results" aria-live="polite"></div><div id="guides" data-cat="software"></div></main>
-<footer><div class="wrap">TechFix, a CSS Senior High School Capstone Project. Educational use only; consult a qualified technician for repairs. <a href="index.html">Home</a><br>References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals. Add your own acknowledgments here.</div></footer>
-<script src="data.js"></script><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software | TechFix: Computer Troubleshooting Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- data-page tells script.js which menu link is the current page -->
+<body data-page="software">
+
+  <a class="skip" href="#main">Skip to content</a>
+  <noscript>
+    <p class="msg warn flush">TechFix needs JavaScript to show its guides and tools. Please enable it.</p>
+  </noscript>
+
+  <!-- ===== HEADER AND MENU (same on every page) ===== -->
+  <header>
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="index.html">Tech<span>Fix</span></a>
+        <button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      </div>
+      <nav aria-label="Main">
+        <ul id="nav-list">
+          <li><a href="index.html" data-page="index">Home</a></li>
+          <li><a href="hardware.html" data-page="hardware">Hardware</a></li>
+          <li><a href="software.html" data-page="software">Software</a></li>
+          <li><a href="internet.html" data-page="internet">Internet</a></li>
+          <li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li>
+          <li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main id="main" class="wrap">
+    <h1>Software Troubleshooting</h1>
+    <p class="muted">Windows-specific steps are labeled. Back up your files before steps that may delete data. No procedure solves every problem.</p>
+
+    <!-- Search box: script.js shows the matches inside #results -->
+    <form id="search-form" class="search" role="search">
+      <label for="q" class="muted">Search problems</label>
+      <input id="q" type="search" placeholder="e.g. no display, slow, wifi" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div id="results" aria-live="polite"></div>
+
+    <!-- script.js fills this box with the guides whose "cat" is "software" -->
+    <div id="guides" data-cat="software"></div>
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer>
+    <div class="wrap">
+      TechFix, a CSS Senior High School Capstone Project. Educational use only;
+      consult a qualified technician for repairs. <a href="index.html">Home</a><br>
+      References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals.
+      Add your own acknowledgments here.
+    </div>
+  </footer>
+
+  <!-- data.js must load BEFORE script.js, because script.js uses what data.js defines -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

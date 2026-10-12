@@ -1,19 +1,91 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Home | TechFix: Computer Troubleshooting Guide</title><link rel="stylesheet" href="style.css"></head>
-<body data-page="index"><a class="skip" href="#main">Skip to content</a><noscript><p class="msg warn" style="margin:0">TechFix needs JavaScript to show its guides and tools. Please enable it.</p></noscript><header><div class="wrap"><div class="bar"><a class="brand" href="index.html">Tech<span>Fix</span></a>
-<button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button></div>
-<nav aria-label="Main"><ul id="nav-list"><li><a href="index.html" data-page="index">Home</a></li><li><a href="hardware.html" data-page="hardware">Hardware</a></li><li><a href="software.html" data-page="software">Software</a></li><li><a href="internet.html" data-page="internet">Internet</a></li><li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li><li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li></ul></nav></div></header>
-<main id="main" class="wrap"><section class="hero"><h1>Fix Your Computer, Step by Step.</h1>
-<p class="muted">TechFix is an educational guide for common computer problems. It explains possible causes and safe checks. It does not diagnose hardware automatically.</p><form id="search-form" class="search" role="search"><label for="q" class="muted" style="width:100%">Search problems</label>
-<input id="q" type="search" placeholder="e.g. no display, slow, wifi" autocomplete="off"><button class="btn" type="submit">Search</button></form><div id="results" aria-live="polite"></div></section>
-<h2>Common problems</h2><div id="problem-cards" class="grid"></div>
-<h2>Categories</h2><div class="grid">
-<a class="card" href="hardware.html"><h3>🔧 Hardware</h3><span class="muted">Power, display, devices</span></a>
-<a class="card" href="software.html"><h3>💾 Software</h3><span class="muted">Slow, crashes, startup</span></a>
-<a class="card" href="internet.html"><h3>📶 Internet</h3><span class="muted">Wi-Fi, router, DNS</span></a>
-<a class="card" href="diagnostics.html"><h3>🩺 Diagnostics</h3><span class="muted">Answer questions to narrow it down</span></a></div>
-<h2>How it works</h2><ol><li>Describe the problem (search or wizard).</li><li>Read the possible causes.</li><li>Follow the safe steps in order.</li><li>Stop and ask a technician if unsure.</li></ol>
-<h2>Safety reminders</h2><div class="safety">Unplug the computer before touching internal parts. Never open a power supply. Back up files before risky steps.</div></main>
-<footer><div class="wrap">TechFix, a CSS Senior High School Capstone Project. Educational use only; consult a qualified technician for repairs. <a href="index.html">Home</a><br>References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals. Add your own acknowledgments here.</div></footer>
-<script src="data.js"></script><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | TechFix: Computer Troubleshooting Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- data-page tells script.js which menu link is the current page -->
+<body data-page="index">
+
+  <a class="skip" href="#main">Skip to content</a>
+  <noscript>
+    <p class="msg warn flush">TechFix needs JavaScript to show its guides and tools. Please enable it.</p>
+  </noscript>
+
+  <!-- ===== HEADER AND MENU (same on every page) ===== -->
+  <header>
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="index.html">Tech<span>Fix</span></a>
+        <button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      </div>
+      <nav aria-label="Main">
+        <ul id="nav-list">
+          <li><a href="index.html" data-page="index">Home</a></li>
+          <li><a href="hardware.html" data-page="hardware">Hardware</a></li>
+          <li><a href="software.html" data-page="software">Software</a></li>
+          <li><a href="internet.html" data-page="internet">Internet</a></li>
+          <li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li>
+          <li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main id="main" class="wrap">
+    <section class="hero">
+      <h1>Fix Your Computer, Step by Step.</h1>
+      <p class="muted">TechFix is an educational guide for common computer problems. It explains possible causes and safe checks. It does not diagnose hardware automatically.</p>
+
+    <!-- Search box: script.js shows the matches inside #results -->
+    <form id="search-form" class="search" role="search">
+      <label for="q" class="muted">Search problems</label>
+      <input id="q" type="search" placeholder="e.g. no display, slow, wifi" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div id="results" aria-live="polite"></div>
+    </section>
+
+    <h2>Common problems</h2>
+    <!-- script.js builds these cards from PROBLEM_CARDS in data.js -->
+    <div id="problem-cards" class="grid"></div>
+
+    <h2>Categories</h2>
+    <div class="grid">
+      <a class="card" href="hardware.html"><h3>🔧 Hardware</h3><span class="muted">Power, display, devices</span></a>
+      <a class="card" href="software.html"><h3>💾 Software</h3><span class="muted">Slow, crashes, startup</span></a>
+      <a class="card" href="internet.html"><h3>📶 Internet</h3><span class="muted">Wi-Fi, router, DNS</span></a>
+      <a class="card" href="diagnostics.html"><h3>🩺 Diagnostics</h3><span class="muted">Answer questions to narrow it down</span></a>
+    </div>
+
+    <h2>How it works</h2>
+    <ol>
+      <li>Describe the problem (search or wizard).</li>
+      <li>Read the possible causes.</li>
+      <li>Follow the safe steps in order.</li>
+      <li>Stop and ask a technician if unsure.</li>
+    </ol>
+
+    <h2>Safety reminders</h2>
+    <div class="safety">Unplug the computer before touching internal parts. Never open a power supply. Back up files before risky steps.</div>
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer>
+    <div class="wrap">
+      TechFix, a CSS Senior High School Capstone Project. Educational use only;
+      consult a qualified technician for repairs. <a href="index.html">Home</a><br>
+      References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals.
+      Add your own acknowledgments here.
+    </div>
+  </footer>
+
+  <!-- data.js must load BEFORE script.js, because script.js uses what data.js defines -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

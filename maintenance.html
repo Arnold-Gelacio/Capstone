@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maintenance | TechFix: Computer Troubleshooting Guide</title><link rel="stylesheet" href="style.css"></head>
-<body data-page="maintenance"><header><div class="wrap"><div class="bar"><a class="brand" href="index.html">Tech<span>Fix</span></a>
-<button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button></div>
-<nav aria-label="Main"><ul id="nav-list"><li><a href="index.html" data-page="index">Home</a></li><li><a href="hardware.html" data-page="hardware">Hardware</a></li><li><a href="software.html" data-page="software">Software</a></li><li><a href="internet.html" data-page="internet">Internet</a></li><li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li><li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li></ul></nav></div></header>
-<main class="wrap"><h1>Maintenance and Safety</h1><div id="topics" class="grid two"></div>
-<h2>Maintenance checklist</h2><p id="storage-note" class="msg warn" hidden>Saving is unavailable in this browser. The checklist works but will reset when you leave.</p>
-<div id="checklist"></div><button id="reset" class="btn alt" type="button" style="margin-top:12px">Reset checklist</button></main>
-<footer><div class="wrap">TechFix, a CSS Senior High School Capstone Project. Educational use only; consult a qualified technician for repairs. <a href="index.html">Home</a><br>References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals. Add your own acknowledgments here.</div></footer>
-<script src="data.js"></script><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maintenance | TechFix: Computer Troubleshooting Guide</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- data-page tells script.js which menu link is the current page -->
+<body data-page="maintenance">
+
+  <a class="skip" href="#main">Skip to content</a>
+  <noscript>
+    <p class="msg warn flush">TechFix needs JavaScript to show its guides and tools. Please enable it.</p>
+  </noscript>
+
+  <!-- ===== HEADER AND MENU (same on every page) ===== -->
+  <header>
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="index.html">Tech<span>Fix</span></a>
+        <button id="menu-btn" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      </div>
+      <nav aria-label="Main">
+        <ul id="nav-list">
+          <li><a href="index.html" data-page="index">Home</a></li>
+          <li><a href="hardware.html" data-page="hardware">Hardware</a></li>
+          <li><a href="software.html" data-page="software">Software</a></li>
+          <li><a href="internet.html" data-page="internet">Internet</a></li>
+          <li><a href="diagnostics.html" data-page="diagnostics">Diagnostics</a></li>
+          <li><a href="maintenance.html" data-page="maintenance">Maintenance</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main id="main" class="wrap">
+    <h1>Maintenance and Safety</h1>
+
+    <!-- script.js builds these cards from TOPICS in data.js -->
+    <div id="topics" class="grid two"></div>
+
+    <h2>Maintenance checklist</h2>
+    <p id="storage-note" class="msg warn" hidden>Saving is unavailable in this browser. The checklist works but will reset when you leave.</p>
+    <p id="count" class="muted" aria-live="polite"></p>
+
+    <!-- script.js builds the checkboxes here from CHECKLIST in data.js -->
+    <div id="checklist"></div>
+    <button id="reset" class="btn alt reset-btn" type="button">Reset checklist</button>
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer>
+    <div class="wrap">
+      TechFix, a CSS Senior High School Capstone Project. Educational use only;
+      consult a qualified technician for repairs. <a href="index.html">Home</a><br>
+      References: Microsoft Support (support.microsoft.com) and device manufacturers' manuals.
+      Add your own acknowledgments here.
+    </div>
+  </footer>
+
+  <!-- data.js must load BEFORE script.js, because script.js uses what data.js defines -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -22,23 +22,23 @@ Every page has the same pieces: `<header>` (brand + nav), `<main id="main">` (pa
 - Skip link and `aria-*` attributes: accessibility for keyboard and screen-reader users.
 
 ### style.css
-- `:root{--bg, --accent ...}`: **CSS variables**. Change one color here and the whole site changes.
+- `:root {--bg, --accent ...}`: **CSS variables**. Change one color here and the whole site changes.
 - **Mobile-first**: base styles are for phones. `@media(min-width:768px)` and `1024px` add tablet and desktop layouts.
 - `.grid`: CSS Grid, 1 column on phones, 2 on tablets, 4 on desktops.
 - `:focus-visible`: the visible outline when using the keyboard.
-- `nav ul{display:none}` and `.open{display:flex}`: how the mobile menu hides and shows.
+- `nav ul {display:none}` and `nav ul.open {display:flex}`: how the mobile menu hides and shows.
 
 ### data.js (the content)
-- `GUIDES`: array of objects. Fields: `id`, `cat`, `title`, `k` (search keywords), `d` (description), `c` (causes), `s` (steps), `n` (next action), `w` (safety).
+- `GUIDES`: array of objects. Fields: `id`, `cat`, `title`, `keywords` (search words), `description`, `causes`, `steps`, `observe` (what to watch for / next action), `safety`. The comment at the top of `data.js` explains every field.
 - `TREE`: the wizard's decision tree (see section 4).
-- `PROBLEM_CARDS`, `CHECKLIST`, `TOPICS`: content for the home cards and maintenance page.
+- `PROBLEM_CARDS`, `CHECKLIST`, `TOPICS`: content for the home cards and maintenance page. Every file starts with a comment that lists its sections, so you can find things quickly.
 
 ### script.js (the behavior)
-Everything is inside one wrapper `(function(){ ... })();` so variables stay private (no unnecessary globals). Then at the bottom, after the page loads (`DOMContentLoaded`), it calls each `init...` function. Each one first checks that its element exists (`if (!box) return;`), so the same script works safely on every page.
+The file is split into numbered sections (settings, helpers, menu, search, guides, cards, wizard, maintenance, start-up). Everything is inside one wrapper `(function(){ ... })();` so variables stay private. At the bottom, after the page loads (`DOMContentLoaded`), it calls each `init...` function. Each one first checks that its element exists (`if (!box) return;`), so the same script works safely on every page.
 
 | Function | What it does |
 |---|---|
-| `el(tag, text, cls)` | Creates an element using `textContent`. Safe: text is never treated as HTML. Used everywhere to avoid repeating code. |
+| `makeElement(tag, text, className)` | Creates an element using `textContent`. Safe: text is never treated as HTML. Used everywhere to avoid repeating code. `makeList` and `makeButton` build on it. |
 | `initNav` | Menu button toggles the `open` class; marks the current page with `aria-current`. |
 | `normalize` | Lowercases, removes punctuation and extra spaces, trims plural "s". |
 | `scoreGuide` / `runSearch` | Counts how many search words appear in a guide's title, keywords and description; shows matches sorted by score. Handles empty and no-match cases. |
@@ -46,7 +46,7 @@ Everything is inside one wrapper `(function(){ ... })();` so variables stay priv
 | `buildGuide` / `initGuides` | Builds each expandable guide; opens the one named in the URL (`software.html#sw-slow`); adds Expand/Collapse all. |
 | `initCards` | Builds the 8 home problem cards from `PROBLEM_CARDS`. |
 | `initWizard` | The diagnostic wizard (section 4). |
-| `initMaintenance` | Builds topics and the checklist; saves to `localStorage` inside `try/catch`. |
+| `initTopics` / `initChecklist` | Build the topic cards, and the checklist with its "X of 7 done" counter; saves to `localStorage` inside `try/catch`. |
 
 ## 3. How search works (say this in your defense)
 1. The user types "No Display!!" and submits.
@@ -57,13 +57,13 @@ Everything is inside one wrapper `(function(){ ... })();` so variables stay priv
 It is **keyword matching**, not artificial intelligence. Say this honestly.
 
 ## 4. How the diagnostic wizard works
-The tree is a set of named nodes. A question node has options; each option names the next node. A result node has `result:true`.
+The tree is a set of named nodes. A question node has `options`; each option has a `label` and the `next` node. A result node has `isResult: true`.
 ```
 start → "Computer will not start" → power → "No lights" → r_power (result)
 ```
-- `path` is a list of visited node IDs. The current question is the last one.
+- `path` is a list of visited node IDs (see `WIZARD_START_NODE` at the top of `script.js`). The current question is the last one.
 - **Next:** `path.push(nextId)`. **Back:** `path.pop()`. **Restart:** `path = ["start"]`.
-- **Safety:** before showing a step, the code checks `TREE[id]` exists. If not, it shows an error instead of crashing (this is how "undefined steps" are prevented).
+- **Safety:** before showing a step, the code checks `TREE[id]` exists (`showCurrentStep` and `chooseOption`). If not, it shows an error instead of crashing (this is how "undefined steps" are prevented).
 - Results say "possible cause" because the website cannot inspect real hardware.
 - I validated that every option points to an existing node and every result links to an existing guide.
 

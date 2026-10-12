@@ -10,6 +10,7 @@ Images: this site uses no image files, so image-loading tests do not apply.
 | Internet page loads and shows 7 guides | 7 expandable guides |  | NOT TESTED |
 | Diagnostics page loads wizard | First question shown |  | NOT TESTED |
 | Maintenance page loads topics and checklist | 9 topics, 7 checkboxes |  | NOT TESTED |
+| Tick checklist boxes | Counter shows e.g. "2 of 7 done" and updates on every change, including Reset |  | NOT TESTED |
 | Every nav link opens the right page | Correct page, current page highlighted |  | NOT TESTED |
 | All 8 home problem cards open the right guide | Guide opens automatically |  | NOT TESTED |
 | Search 'no display' | Monitor guide listed |  | NOT TESTED |
